@@ -1,0 +1,81 @@
+.mars-photos-page {
+  padding: 2rem;
+  color: white;
+}
+
+.mars-photos-page h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.mars-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.mars-photo-card {
+  background-color: #1a1f30;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.mars-photo-card:hover {
+  transform: scale(1.02);
+}
+
+.mars-photo-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-info {
+  padding: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.no-photos {
+  color: #448aff;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.filter-section {
+  margin-bottom: 1.5rem;
+}
+
+.filter-section input{
+  margin-left: 1.5rem;
+}
+
+.loading-overlay {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0c0f1a;
+}
+
+.error-message {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ff4d4f;
+  margin-top: 2rem;
+}
+
+.custom-date-input {
+  padding: 0.5rem 1rem;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background-color: #1a1f2b;
+  color: #fff;
+}
+
+.custom-date-input:focus {
+  outline: none;
+  border-color: #448aff;
+}

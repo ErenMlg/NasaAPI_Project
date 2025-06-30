@@ -1,0 +1,35 @@
+/* App.css */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  background-color: #0c0f1a;
+  color: #f1f5f9;
+  font-family: 'Poppins', sans-serif;
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+/* Navbar genel stil */
+
+
+/* Responsive görünüm için içerik genişliğini sınırlayabilirsin */
+.content {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.scene-wrapper {
+  margin: 0 auto;
+  max-width: 100%;
+  height: calc(100vh - 150px);
+}
+
+.app-content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
