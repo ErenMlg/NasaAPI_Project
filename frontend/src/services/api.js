@@ -13,3 +13,15 @@ export const fetchMarsPhotos = async (date = '') => {
   });
   return res.data;
 };
+
+export const fetchAsteroids = async (startDate = '', endDate = '') => {
+  const res = await axios.get(`${BASE_URL}/neo-feed`, {
+    params: { start_date: startDate, end_date: endDate }
+  });
+  return res.data;
+};
+
+export const fetchEpicImages = async () => {
+  const res = await axios.get(`${BASE_URL}/epic`);
+  return res.data;
+};

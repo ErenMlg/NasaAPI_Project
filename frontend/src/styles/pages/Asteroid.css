@@ -12,6 +12,10 @@
   margin: 20px 0;
 }
 
+.filter-section label {
+  margin: 0 1rem;
+}
+
 .asteroids-grid {
   display: grid;
   gap: 20px;

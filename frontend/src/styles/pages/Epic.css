@@ -1,0 +1,35 @@
+/* styles/pages/EpicImages.css */
+.epic-images-page {
+  padding: 20px;
+}
+
+.epic-images-page h1{
+  text-align: center;
+}
+
+.epic-images-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.epic-image-card {
+  background: #1c1c1c;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+.epic-image-card img {
+  width: 100%;
+  display: block;
+}
+
+.image-info {
+  padding: 10px;
+  color: #ddd;
+}
+
+.image-info p {
+  margin: 5px 0;
+}

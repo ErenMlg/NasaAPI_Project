@@ -16,21 +16,6 @@ export async function getMarsPhotosByDate(date = '2020-07-01') {
   }
 }
 
-export async function getAPOD(date = '') {
-  try {
-    const response = await axios.get(`${NASA_API_BASE}/planetary/apod`, {
-      params: {
-        api_key: NASA_API_KEY,
-        date // opsiyonel, boşsa bugünün görseli gelir
-      }
-    });
-    return response.data;
-  } catch (error) {
-    console.error('APOD verisi alınırken hata:', error.message);
-    throw new Error('Günün astronomi fotoğrafı alınamadı.');
-  }
-}
-
 export async function getNeoFeed(startDate = '', endDate = '') {
   try {
     const response = await axios.get(`${NASA_API_BASE}/neo/rest/v1/feed`, {
@@ -44,6 +29,21 @@ export async function getNeoFeed(startDate = '', endDate = '') {
   } catch (error) {
     console.error('NEO verisi alınırken hata:', error.message);
     throw new Error('Yakın dünya cismi verileri alınamadı.');
+  }
+}
+
+export async function getAPOD(date = '') {
+  try {
+    const response = await axios.get(`${NASA_API_BASE}/planetary/apod`, {
+      params: {
+        api_key: NASA_API_KEY,
+        date // opsiyonel, boşsa bugünün görseli gelir
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('APOD verisi alınırken hata:', error.message);
+    throw new Error('Günün astronomi fotoğrafı alınamadı.');
   }
 }
 
