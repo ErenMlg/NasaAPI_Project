@@ -31,7 +31,7 @@ export default function EpicImages() {
           {images.map((img) => (
             <div key={img.identifier} className="epic-image-card">
               <a href={img.image_url} target="_blank" rel="noopener noreferrer">
-                <img src={img.image_url} alt={img.caption} />
+                <img src={img.image_url} alt={img.caption} loading="lazy" />
               </a>
               <div className="image-info">
                 <p>{img.caption}</p>

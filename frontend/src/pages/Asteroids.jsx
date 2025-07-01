@@ -44,13 +44,19 @@ export default function Asteroids() {
             type="date"
             value={endDate}
             min={startDate}
-            onChange={(e) => setEndDate(e.target.value)}
+            onChange={(e) => setEndDate(e.target.value) || (asteroids.length = 0)}
             className="custom-date-input"
           />
         </label>
       </div>
 
       {error && (
+        <div className="error-message">
+          Error: {error.response?.data?.error || error.message}
+        </div>
+      )}
+
+      {!loading && asteroids.length === 0 && !error && (
         <div className="error-message">
           Nearest Earth Object (NEO) fetching some error occurred, please try again later.
         </div>

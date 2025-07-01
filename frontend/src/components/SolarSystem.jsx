@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef,useState } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
 import { TextureLoader, DoubleSide } from 'three';
 import { planets } from '../constants/planets';
 import OrbitRing from './OrbitRing';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
+import '../styles/components/SolarSystem.css'; 
 
 function Planet({ name, texture, position, size, hasRing, onClick }) {
   const meshRef = useRef();
@@ -43,8 +44,15 @@ function Planet({ name, texture, position, size, hasRing, onClick }) {
   );
 }
 
-export default function SolarSystem({ onPlanetClick }) {
+export default function SolarSystem() {
+  const [selectedPlanet, setSelectedPlanet] = useState(null);
+
+  const handlePlanetClick = (planetName) => {
+    const data = planets.find(p => p.name === planetName);
+    if (data) setSelectedPlanet(data);
+  };
   return (
+    <>
     <Canvas camera={{ position: [0, 25, 50], fov: 50 }}>
       <EffectComposer>
       <Bloom luminanceThreshold={0.3} luminanceSmoothing={0.9} intensity={2.5} />
@@ -65,11 +73,22 @@ export default function SolarSystem({ onPlanetClick }) {
 
       {planets.map((planet, idx) => (
   <>
-    <Planet key={idx} {...planet} onClick={onPlanetClick} />
+    <Planet key={idx} {...planet} onClick={handlePlanetClick} />
     {planet.name !== 'Sun' && <OrbitRing radius={planet.distance} />}
   </>
 ))}
 
     </Canvas>
+      {selectedPlanet && (
+        <div className="planet-popup" onClick={() => setSelectedPlanet(null)}>
+          <div className="popup-inner" onClick={(e) => e.stopPropagation()}>
+            <button className="popup-close" onClick={() => setSelectedPlanet(null)}>×</button>
+            <h2>{selectedPlanet.name}</h2>
+            <p>{selectedPlanet.description}</p>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
+

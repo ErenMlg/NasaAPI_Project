@@ -28,7 +28,7 @@ export async function getNeoFeed(startDate = '', endDate = '') {
     return response.data;
   } catch (error) {
     console.error('NEO verisi alınırken hata:', error.message);
-    throw new Error('Yakın dünya cismi verileri alınamadı.');
+    throw new Error('Cant fetch Near Earth Objects (NEO) data. It may be due to an invalid date range or network issues. Please check your input and try again. Max date range is 7 days.');
   }
 }
 
@@ -49,7 +49,6 @@ export async function getAPOD(date = '') {
 
 export async function getEpicImages(date = '') {
   try {
-    // API çağrısı: https://api.nasa.gov/EPIC/api/natural/date/2024-06-20
     const url = date
       ? `${NASA_API_BASE}/EPIC/api/natural/date/${date}`
       : `${NASA_API_BASE}/EPIC/api/natural`;
@@ -60,7 +59,6 @@ export async function getEpicImages(date = '') {
       }
     });
 
-    // Her görsel için erişilebilir URL hesapla
     const images = response.data.map((img) => {
       const [year, month, day] = img.date.split(' ')[0].split('-');
       return {
@@ -81,22 +79,24 @@ export async function searchNasaMedia(query) {
     const response = await axios.get(`https://images-api.nasa.gov/search`, {
       params: {
         q: query,
-        media_type: 'image' // sadece görselleri alıyoruz (video da istenirse genişletilebilir)
+        media_type: 'image'
       }
     });
 
-    // API'nin veri yapısını sadeleştiriyoruz
     const results = response.data.collection.items.map((item) => ({
       title: item.data[0]?.title,
       description: item.data[0]?.description,
       date_created: item.data[0]?.date_created,
-      image_url: item.links?.[0]?.href // görsel linki
+      image_url: item.links?.[0]?.href 
     }));
+
+    if (results.length === 0) {
+      throw new Error(`No results found for the given '${query}'.`);
+    }
 
     return results;
   } catch (error) {
-    console.error('NASA arşiv araması başarısız:', error.message);
-    throw new Error('Görsel arama verileri alınamadı.');
+    throw error;
   }
 }
 

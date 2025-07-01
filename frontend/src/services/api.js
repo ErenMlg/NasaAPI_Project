@@ -25,3 +25,16 @@ export const fetchEpicImages = async () => {
   const res = await axios.get(`${BASE_URL}/epic`);
   return res.data;
 };
+
+export const fetchSearchResults = async (query) => {
+  const res = await axios.get(`${BASE_URL}/media-search`, {
+    params: { p : query }
+  });
+  return res.data;
+};
+
+export const sendToGemini = async (message) => {
+  const res = await axios.post('${BASE_URL}/api/gemini/chat', { message });
+  return res.data;
+};
+

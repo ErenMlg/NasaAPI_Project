@@ -1,4 +1,3 @@
-// hooks/useAsteroids.js
 
 import { useEffect, useState } from 'react';
 import { fetchAsteroids } from '../services/api';

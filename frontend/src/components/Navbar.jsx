@@ -1,8 +1,7 @@
-// src/components/Navbar.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png'; // kendi logo yolunu kullan
-import '../styles/components/Navbar.css'; // Navbar için CSS dosyasını ekle
+import logo from '../assets/logo.png'; 
+import '../styles/components/Navbar.css'; 
 
 const Navbar = () => {
   return (

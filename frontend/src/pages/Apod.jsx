@@ -7,7 +7,7 @@ export default function ApodPage() {
   const { data: apod, loading, error } = useApod();
 
   if (loading) return <Loading />;
-  if (error) return <div className="apod-page">Hata oluştu: {error.message}</div>;
+  if (error) return <div className="apod-page">Error: {error.message}</div>;
 
   return (
     <div className="apod-page">
@@ -20,7 +20,7 @@ export default function ApodPage() {
           <p className="apod-date">{apod.date}</p>
           <p className="apod-explanation">{apod.explanation}</p>
           <a href={apod.hdurl} target="_blank" rel="noopener noreferrer" className="hd-link">
-            HD çözünürlükte görüntüle ↗
+            View HD Resolution ↗
             </a>
         </div>
       </div>

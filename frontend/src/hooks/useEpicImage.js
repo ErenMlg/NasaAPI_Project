@@ -1,4 +1,3 @@
-// hooks/useEpicImages.js
 
 import { useEffect, useState } from 'react';
 import { fetchEpicImages } from '../services/api';

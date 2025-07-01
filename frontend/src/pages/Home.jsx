@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/pages/Home.css';
 import { Stars } from '@react-three/drei';
@@ -11,11 +10,11 @@ import { useApod } from '../hooks/useApod';
 import LoadingComponent from '../components/Loading';
 
 const apiCards = [
-  { title: 'APOD', desc: 'Günün uzay fotoğrafı', path: '/apod'},
-  { title: 'Mars Photos', desc: 'Mars araçlarının çektiği fotoğraflar', path: '/mars-photos', image: marsImage },
-  { title: 'Neo Feed', desc: 'Yaklaşan asteroid verileri', path: '/asteroids', image: astreoidImage },
-  { title: 'Epic Images', desc: 'Dünya\'nın günlük uydu görüntüleri', path: '/epic-images', image: epicImage },
-  { title: 'NASA Media Search', desc: 'NASA medya arama motoru', path: '/media-search', image: nasaImage },
+  { title: 'APOD', desc: 'Today\'s Astronomy Picture of the Day', path: '/apod'},
+  { title: 'Mars Photos', desc: 'Photos taken by Mars rovers', path: '/mars-photos', image: marsImage },
+  { title: 'Neo Feed', desc: 'Near-Earth Object data', path: '/asteroids', image: astreoidImage },
+  { title: 'Epic Images', desc: 'Daily satellite images of Earth', path: '/epic-images', image: epicImage },
+  { title: 'NASA Media Search', desc: 'NASA media search engine', path: '/media-search', image: nasaImage },
 ];
 
 export default function HomePage() {
@@ -52,7 +51,7 @@ export default function HomePage() {
               <div className="card-content">
                 <h3>{api.title}</h3>
                 <p>{api.desc}</p>
-                <Link to={api.path} className="go-button">Git</Link>
+                <Link to={api.path} className="go-button">Go</Link>
               </div>
             </div>
           ))}

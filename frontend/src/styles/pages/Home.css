@@ -117,15 +117,12 @@
   background-color: #1e88e5;
 }
 
-
-/* YILDIZLARIN ARKAYA OTURMASI */
 .stars-background {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-/* METNİN ÖNE GELMESİ */
 .hero-content {
   z-index: 1;
   position: relative;

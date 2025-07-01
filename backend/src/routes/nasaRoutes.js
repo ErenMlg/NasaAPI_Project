@@ -20,7 +20,7 @@ router.get('/mars-photos', async (req, res) => {
 import { getAPOD } from '../services/nasaService.js';
 
 router.get('/apod', async (req, res) => {
-  const date = req.query.date || ''; // Boşsa bugünün tarihi alınır
+  const date = req.query.date || '';
   try {
     const data = await getAPOD(date);
     res.json(data);
@@ -46,7 +46,7 @@ router.get('/neo-feed', async (req, res) => {
 import { getEpicImages } from '../services/nasaService.js';
 
 router.get('/epic', async (req, res) => {
-  const date = req.query.date || ''; // yyyy-mm-dd
+  const date = req.query.date || ''; 
 
   try {
     const data = await getEpicImages(date);
@@ -59,17 +59,13 @@ router.get('/epic', async (req, res) => {
 import { searchNasaMedia } from '../services/nasaService.js';
 
 router.get('/media-search', async (req, res) => {
-  const query = req.query.q;
-
-  if (!query) {
-    return res.status(400).json({ error: 'Arama sorgusu gerekli (q=?).' });
-  }
+  const query = req.query.p;
 
   try {
     const results = await searchNasaMedia(query);
     res.json(results);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 });
 
